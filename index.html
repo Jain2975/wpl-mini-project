@@ -11,6 +11,9 @@
             background: url('./images/background.png') no-repeat center center fixed;
             background-size: cover;
             color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
         .nav {
             width: 100%;
@@ -21,7 +24,7 @@
             justify-content: flex-end;
             align-items: center;
             padding: 15px;
-            background: transparent; /* Fully transparent */
+            background: transparent;
         }
         .nav a {
             font-size: 18px;
@@ -35,11 +38,38 @@
             border-radius: 5px;
         }
         .home-content {
-            margin-top: 100px; /* Moves content lower to avoid navbar overlap */
+            margin-top: 120px;
             text-align: center;
+            background: rgba(0, 51, 102, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            color: #f1f1f1;
+        }
+        .home-content h1 {
+            color: #00c8ff;
+            text-shadow: 2px 2px 5px rgba(0, 200, 255, 0.5);
+        }
+        .explore-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            font-size: 18px;
+            background: #00c8ff;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .explore-btn:hover {
+            background: #0096cc;
         }
         .carousel-container {
-            margin-top: 50px; /* Additional space for better layout */
+            margin-top: 60px;
         }
         .fact-slide {
             background: rgba(0, 0, 0, 0.6);
@@ -47,6 +77,16 @@
             border-radius: 10px;
             text-align: center;
             font-size: 18px;
+        }
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 8%;
+        }
+        .footer {
+            margin-top: auto;
+            padding: 20px;
+            text-align: center;
+            background: transparent;
         }
     </style>
 </head>
@@ -63,6 +103,7 @@
             and support diverse marine ecosystems. However, pollution, overfishing, and climate change are threatening marine life. 
             <strong>UN Sustainable Development Goal 14</strong> aims to conserve and sustainably use the oceans, seas, and marine resources.
         </p>
+        <a href="./Pages/ocean-map.html" class="explore-btn">Explore Ocean Health Map</a>
     </section>
     
     <section class="carousel-container">
@@ -96,7 +137,7 @@
             
             const carouselContent = document.getElementById("carouselContent");
             
-            facts.sort(() => Math.random() - 0.5); // Shuffle facts
+            facts.sort(() => Math.random() - 0.5);
             
             facts.forEach((fact, index) => {
                 const factItem = document.createElement("div");
