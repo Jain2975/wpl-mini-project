@@ -12,6 +12,35 @@
             background-size: cover;
             color: white;
         }
+        .nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 15px;
+            background: transparent; /* Fully transparent */
+        }
+        .nav a {
+            font-size: 18px;
+            text-decoration: none;
+            color: white;
+            padding: 10px 20px;
+            transition: 0.3s;
+        }
+        .nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        .home-content {
+            margin-top: 100px; /* Moves content lower to avoid navbar overlap */
+            text-align: center;
+        }
+        .carousel-container {
+            margin-top: 50px; /* Additional space for better layout */
+        }
         .fact-slide {
             background: rgba(0, 0, 0, 0.6);
             padding: 20px;
