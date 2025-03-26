@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: ../index.php");
             exit();
         } else {
-            echo "Invalid password! <a href='login.html'>Try again</a>";
+            echo "Invalid password! <a href='login.php'>Try again</a>";
         }
     } else {
-        echo "User not found! <a href='register.html'>Register here</a>";
+        echo "User not found! <a href='register.php'>Register here</a>";
     }
 
     $stmt->close();
@@ -45,9 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <div class="nav">
-        <a href="../index.html">Home</a>
-        <!--<a href="about.html">About</a>-->
-        <a href="contact.html">Contact</a>
+        <a href="../index.php">Home</a>
+        <!--<a href="about.php">About</a>-->
+        <a href="contact.php">Contact</a>
     </div>
 
     <div class="login-container">
