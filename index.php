@@ -1,3 +1,7 @@
+<?php 
+session_start(); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +30,7 @@
             padding: 15px;
             background: transparent;
         }
-        .nav a {
+        .nav a, .nav span {
             font-size: 18px;
             text-decoration: none;
             color: white;
@@ -38,9 +42,11 @@
             border-radius: 5px;
         }
         .home-content {
-            margin-top: 120px;
+
+            margin-top: 100px;
+
             text-align: center;
-            background: rgba(15, 51, 87, 0.7);
+            background: rgba(0, 51, 102, 0.7);
             padding: 30px;
             border-radius: 15px;
             width: 80%;
@@ -69,7 +75,10 @@
             background: #0096cc;
         }
         .carousel-container {
-            margin-top: 60px;
+
+            margin-top: 50px;
+
+ 
         }
         .fact-slide {
             background: rgba(0, 0, 0, 0.6);
@@ -92,7 +101,12 @@
 </head>
 <body>
     <div class="nav">
-        <a href="./Pages/login.html"> Login</a>        
+        <?php if (isset($_SESSION["username"])): ?>
+            <span>Welcome, <?php echo $_SESSION["username"]; ?>!</span>
+            <a href="./Pages/logout.php">Logout</a>
+        <?php else: ?>
+            <a href="./Pages/login.html">Login/Register</a>
+        <?php endif; ?>
         <a href="./Pages/contact.html">Contact</a>
     </div>
 
