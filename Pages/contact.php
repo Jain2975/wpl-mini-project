@@ -9,9 +9,9 @@
 </head>
 <body>
     <div class="nav">
-        <a href="../index.html">Home</a>
+        <a href="../index.php">Home</a>
         <!--<a href="about.html">About</a>-->
-        <a href="login.html">Login</a>
+        <a href="login.php">Login</a>
     </div>
 
     <section class="contact-container">
