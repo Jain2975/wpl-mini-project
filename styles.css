@@ -13,7 +13,7 @@ body {
 body {
   background: url('./images/background.png') no-repeat center center fixed;
   background-size: cover;
-  color: white;
+  
 }
 
 .nav {
@@ -115,6 +115,7 @@ body {
   text-align: center;
   margin-top: 100px;
   margin-bottom: 50px;
+  color: black !important;
 }
 
 .login-container h2 {
@@ -129,6 +130,7 @@ body {
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  color: black !important;
 }
 
 .login-container button {
@@ -142,7 +144,9 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-
+.login-container form label{
+  color: black;
+}
 .login-container button:hover {
   background: #00509e;
 }
