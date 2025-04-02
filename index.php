@@ -105,9 +105,9 @@ session_start();
             <span>Welcome, <?php echo $_SESSION["username"]; ?>!</span>
             <a href="./Pages/logout.php">Logout</a>
         <?php else: ?>
-            <a href="./Pages/login.html">Login/Register</a>
+            <a href="./Pages/login.php">Login/Register</a>
         <?php endif; ?>
-        <a href="./Pages/contact.html">Contact</a>
+        <a href="./Pages/contact.php">Contact</a>
     </div>
 
     <section class="home-content">

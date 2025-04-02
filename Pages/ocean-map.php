@@ -60,8 +60,8 @@
 </head>
 <body>
     <div class="nav">
-        <a href="../index.html">Home</a>
-        <a href="../Pages/contact.html">Contact</a>
+        <a href="../index.php">Home</a>
+        <a href="../Pages/contact.php">Contact</a>
     </div>
     
     <h1>Interactive Ocean Health Map</h1>

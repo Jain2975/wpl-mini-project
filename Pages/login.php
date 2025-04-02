@@ -1,5 +1,4 @@
-// PHP part for the login section
-
+ <!-- PHP part for the login section -->
 <?php
 session_start();
 include 'db.php'; 
@@ -20,20 +19,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION["user_id"] = $user["id"];
             $_SESSION["username"] = $user["username"];
             
+            // Handle "Remember Me" functionality
+            if (!empty($_POST["remember"])) {
+                setcookie("user_email", $email, time() + (86400 * 30), "/"); // Store for 30 days
+                setcookie("user_pass", $password, time() + (86400 * 30), "/"); // Store for 30 days
+            } else {
+                // Delete cookies if "Remember Me" is unchecked
+                setcookie("user_email", "", time() - 3600, "/");
+                setcookie("user_pass", "", time() - 3600, "/");
+            }
+            
             // Redirect to dashboard
             header("Location: ../index.php");
             exit();
-        } else {
-            echo "Invalid password! <a href='login.php'>Try again</a>";
+        } else { 
+            echo "<script>alert('Invalid password! Please try again.'); window.location.href='login.php';</script>";
+            exit();
         }
     } else {
-        echo "User not found! <a href='register.php'>Register here</a>";
+        echo "<script>alert('User not found! Please register first.'); window.location.href='register.php';</script>";
+        exit();
     }
 
     $stmt->close();
 }
 ?>
-//HTML part below
+
+<!-- HTML part below -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,13 +64,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <div class="login-container">
         <h2>Login</h2>
-        <form>
-            <label>Email:</label>
-            <input type="email" required>
-            <label>Password:</label>
-            <input type="password" required>
-            <button type="submit">Login</button>
-        </form>
+        <form action="login.php" method="POST">
+        <label>Email:</label>
+        <input type="email" name="email" required>
+        
+        <label>Password:</label>
+        <input type="password" name="password" required>
+
+        <label>
+            <input type="checkbox" name="remember" <?php if(isset($_COOKIE["user_email"])) { echo "checked"; } ?>> Remember Me
+        </label>
+
+        <p style="margin-top: 10px;">
+            Haven't registered?  
+            <a href="../pages/register.php" style="color: #0077b6; text-decoration: none;">Register Now</a>
+        </p>
+
+    <button type="submit">Login</button>
+</form>
+
     </div>
 </body>
 </html>
