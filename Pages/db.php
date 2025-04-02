@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$dbname = "login";
+$dbname = "WplMiniProject";
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
