@@ -1,4 +1,4 @@
- <!-- PHP part for the login section -->
+<!-- PHP part for the login section -->
 <?php
 session_start();
 include 'db.php'; 
@@ -18,19 +18,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Login successful, create session
             $_SESSION["user_id"] = $user["id"];
             $_SESSION["username"] = $user["username"];
-            
+            $_SESSION["role"] = $user["role"]; // Save role in session
+
             // Handle "Remember Me" functionality
             if (!empty($_POST["remember"])) {
-                setcookie("user_email", $email, time() + (86400 * 30), "/"); // Store for 30 days
-                setcookie("user_pass", $password, time() + (86400 * 30), "/"); // Store for 30 days
+                setcookie("user_email", $email, time() + (86400 * 30), "/"); // 30 days
+                setcookie("user_pass", $password, time() + (86400 * 30), "/"); // 30 days
             } else {
-                // Delete cookies if "Remember Me" is unchecked
                 setcookie("user_email", "", time() - 3600, "/");
                 setcookie("user_pass", "", time() - 3600, "/");
             }
-            
-            // Redirect to dashboard
-            header("Location: ../index.php");
+
+            // Redirect based on role
+            if ($user["role"] === "admin") {
+                header("Location: admin_dashboard.php");
+            } else {
+                header("Location: ../index.php");
+            }
             exit();
         } else { 
             echo "<script>alert('Invalid password! Please try again.'); window.location.href='login.php';</script>";
