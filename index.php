@@ -117,7 +117,7 @@ session_start();
             and support diverse marine ecosystems. However, pollution, overfishing, and climate change are threatening marine life. 
             <strong>UN Sustainable Development Goal 14</strong> aims to conserve and sustainably use the oceans, seas, and marine resources.
         </p>
-        <a href="./Pages/ocean-map.html" class="explore-btn">Explore Ocean Health Map</a>
+        <a href="./Pages/ocean-map.php" class="explore-btn">Explore Ocean Health Map</a>
     </section>
     
     <section class="carousel-container">
