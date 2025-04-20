@@ -22,6 +22,10 @@
                 <img src="../../images/gallery/mammals/sea-lion.jpg" alt="Sea Lion" onclick="openLightbox(this.src, this.alt)">
                 <img src="../../images/gallery/mammals/humpback-whales.jpg" alt="Humpback Whale" onclick="openLightbox(this.src, this.alt)">
                 <img src="../../images/gallery/mammals/seal.jpg" alt="Seal" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/mammals/blue-whale.jpg" alt="Blue Whale" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/mammals/dugong.jpg" alt="Dugong" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/mammals/vaquita.jpeg" alt="Vaquita" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/mammals/dolphin.jpeg" alt="Dolphin" onclick="openLightbox(this.src, this.alt)">
             </div>
         </div>
 
@@ -29,10 +33,13 @@
             <h2>Fish</h2>
             <div class="gallery">
                 <img src="../../images/gallery/fishes/baracuda.jpeg" alt="Barracuda" onclick="openLightbox(this.src, this.alt)">
-                <img src="../../images/gallery/fishes/shark.jpg" alt="Shark" onclick="openLightbox(this.src, this.alt)">
-                <img src="../../images/gallery/fishes/eel.jpg" alt="Eel" onclick="openLightbox(this.src, this.alt)">
-                <img src="../../images/gallery/fishes/clownfish.jpg" alt="Clownfish" onclick="openLightbox(this.src, this.alt)">
-                <img src="../../images/gallery/fishes/angelfish.jpg" alt="Angelfish" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/fishes/shark1.jpg" alt="Shark" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/fishes/emperor-angelfish.jpg" alt="Emperor Angelfish" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/fishes/whale-shark.jpeg" alt="Whale Shark" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/fishes/blue-spotted-ribbontail-ray.jpeg" alt="Blue Spotted Ribbontail Ray" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/fishes/lion-fish.jpg" alt="Lion Fish" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/fishes/clown-fish.jpeg" alt="Clown Fish" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/fishes/mandarin.jpg" alt="Mandarin Fish" onclick="openLightbox(this.src, this.alt)">
             </div>
         </div>
 
@@ -40,8 +47,8 @@
             <h2>Coral Reefs</h2>
             <div class="gallery">
                 <img src="../../images/gallery/coral reefs/coral.jpg" alt="Coral Reef 1" onclick="openLightbox(this.src, this.alt)">
-                <img src="../../images/gallery/coral reefs/coral2.jpg" alt="Coral Reef 2" onclick="openLightbox(this.src, this.alt)">
-                <img src="../../images/gallery/coral reefs/coral3.jpg" alt="Coral Reef 3" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/coral reefs/coral2.jpeg" alt="Coral Reef 2" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/coral reefs/coral3.jpg" alt="Coral Reefs visible from above the surface" onclick="openLightbox(this.src, this.alt)">
             </div>
         </div>`
 
