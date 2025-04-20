@@ -16,6 +16,8 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
+            margin: 0;
+            padding: 0;
         }
         .nav {
             width: 100%;
@@ -26,7 +28,9 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px;
-            background: transparent;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
         }
         .nav a {
             font-size: 18px;
@@ -39,22 +43,80 @@
             background-color: rgba(255, 255, 255, 0.2);
             border-radius: 5px;
         }
-        #map {
-            width: 80%;
-            height: 500px;
+        .map-container {
+            width: 90%;
+            max-width: 1200px;
             margin-top: 100px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        #map {
+            width: 100%;
+            height: 600px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
         }
         .legend {
             position: absolute;
             bottom: 30px;
             left: 30px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
             font-size: 14px;
-            color: black;
+            color: white;
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        .info-panel {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            max-width: 300px;
+        }
+        .custom-popup {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 14px;
+        }
+        .custom-popup h3 {
+            color: #3498db;
+            margin: 0 0 10px 0;
+        }
+        .heatmap-legend {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+        }
+        .heatmap-gradient {
+            height: 20px;
+            width: 200px;
+            background: linear-gradient(to right, #00ff00, #ffff00, #ff0000);
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -64,18 +126,52 @@
         <a href="../Pages/contact.php">Contact</a>
     </div>
     
-    <h1>Interactive Ocean Health Map</h1>
-    <div id="map"></div>
-    <div class="legend" id="legend">
-        <strong>Legend:</strong><br>
-        🔴 High Pollution Zone<br>
-        🟢 Biodiversity Hotspot<br>
-        🔵 Marine Protected Area<br>
-        🟠 Oil Spill Incident<br>
-        ⚫ Overfishing Area<br>
-        <span style="background: red; padding: 2px 5px;">&nbsp;</span> High Pollution Density<br>
-        <span style="background: yellow; padding: 2px 5px;">&nbsp;</span> Moderate Pollution Density<br>
-        <span style="background: green; padding: 2px 5px;">&nbsp;</span> Low Pollution Density
+    <div class="map-container">
+        <h1>Interactive Ocean Health Map</h1>
+        <div id="map"></div>
+        <div class="legend">
+            <strong>Legend:</strong><br>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ff0000;"></div>
+                <span>High Pollution Zone</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #00ff00;"></div>
+                <span>Biodiversity Hotspot</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #0000ff;"></div>
+                <span>Marine Protected Area</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ffa500;"></div>
+                <span>Oil Spill Incident</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #000000;"></div>
+                <span>Overfishing Area</span>
+            </div>
+        </div>
+        <div class="heatmap-legend">
+            <strong>Pollution Density:</strong><br>
+            <div class="heatmap-gradient"></div>
+            <div style="display: flex; justify-content: space-between;">
+                <span>Low</span>
+                <span>Medium</span>
+                <span>High</span>
+            </div>
+        </div>
+        <div class="info-panel">
+            <h3>Ocean Health Status</h3>
+            <p>This map shows real-time data about ocean health, including:</p>
+            <ul>
+                <li>Pollution hotspots</li>
+                <li>Biodiversity areas</li>
+                <li>Protected zones</li>
+                <li>Oil spill incidents</li>
+                <li>Overfishing regions</li>
+            </ul>
+        </div>
     </div>
     
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -83,65 +179,151 @@
     <script>
         var map = L.map('map').setView([0, 0], 2);
         
+        // Use a more detailed base map
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
         
-        // Function to set marker colors based on category
-        function getMarkerColor(type) {
-            const colors = {
-                "High Pollution Zone": "red",
-                "Biodiversity Hotspot": "green",
-                "Marine Protected Area": "blue",
-                "Oil Spill Incident": "orange",
-                "Overfishing Area": "black"
-            };
-            return colors[type] || "gray";
+        // Function to create custom popup content
+        function createPopupContent(feature) {
+            return `
+                <div class="custom-popup">
+                    <h3>${feature.properties.name}</h3>
+                    <p>${feature.properties.description}</p>
+                    ${feature.properties.date ? `<p><strong>Date:</strong> ${feature.properties.date}</p>` : ''}
+                    ${feature.properties.impact ? `<p><strong>Impact:</strong> ${feature.properties.impact}</p>` : ''}
+                    ${feature.properties.source ? `<p><strong>Source:</strong> ${feature.properties.source}</p>` : ''}
+                </div>
+            `;
         }
         
-        // Expanded GeoJSON data with more locations
+        // Enhanced GeoJSON data with more detailed information
         var oceanData = {
             "type": "FeatureCollection",
             "features": [
-                { "type": "Feature", "geometry": { "type": "Point", "coordinates": [-75, 20] }, "properties": { "name": "Great Pacific Garbage Patch", "description": "Plastic Density: 700kg/km²", "type": "High Pollution Zone" } },
-                { "type": "Feature", "geometry": { "type": "Point", "coordinates": [85, -10] }, "properties": { "name": "Great Barrier Reef", "description": "Coral Reefs Present", "type": "Biodiversity Hotspot" } },
-                { "type": "Feature", "geometry": { "type": "Point", "coordinates": [130, -25] }, "properties": { "name": "Papahānaumokuākea Marine National Monument", "description": "Low human activity, rich biodiversity", "type": "Marine Protected Area" } },
-                { "type": "Feature", "geometry": { "type": "Point", "coordinates": [-45, 35] }, "properties": { "name": "North Atlantic Overfishing Zone", "description": "Declining Fish Population", "type": "Overfishing Area" } },
-                { "type": "Feature", "geometry": { "type": "Point", "coordinates": [50, -30] }, "properties": { "name": "Deepwater Horizon Oil Spill Site", "description": "Major oil spill disaster in 2010", "type": "Oil Spill Incident" } },
-                { "type": "Feature", "geometry": { "type": "Point", "coordinates": [13, 80] }, "properties": { "name": "Chennai Coast", "description": "High Plastic & Chemical Pollution", "type": "High Pollution Zone" } },
-                { "type": "Feature", "geometry": { "type": "Point", "coordinates": [106, -6] }, "properties": { "name": "Jakarta Bay", "description": "Severe Waste Dumping & Water Contamination", "type": "High Pollution Zone" } }
+                { 
+                    "type": "Feature", 
+                    "geometry": { "type": "Point", "coordinates": [-145, 35] }, 
+                    "properties": { 
+                        "name": "Great Pacific Garbage Patch", 
+                        "description": "Largest accumulation of ocean plastic in the world. Estimated size: 1.6 million square kilometers.",
+                        "type": "High Pollution Zone",
+                        "impact": "Severe impact on marine life and ecosystems",
+                        "source": "Ocean Cleanup Foundation"
+                    } 
+                },
+                { 
+                    "type": "Feature", 
+                    "geometry": { "type": "Point", "coordinates": [145, -18] }, 
+                    "properties": { 
+                        "name": "Great Barrier Reef", 
+                        "description": "World's largest coral reef system. Home to thousands of marine species.",
+                        "type": "Biodiversity Hotspot",
+                        "impact": "Critical habitat for marine biodiversity",
+                        "source": "UNESCO World Heritage"
+                    } 
+                },
+                { 
+                    "type": "Feature", 
+                    "geometry": { "type": "Point", "coordinates": [-160, 25] }, 
+                    "properties": { 
+                        "name": "Papahānaumokuākea Marine National Monument", 
+                        "description": "Largest marine protected area in the world. Area: 1.5 million square kilometers.",
+                        "type": "Marine Protected Area",
+                        "impact": "Protected habitat for endangered species",
+                        "source": "NOAA"
+                    } 
+                },
+                { 
+                    "type": "Feature", 
+                    "geometry": { "type": "Point", "coordinates": [-45, 35] }, 
+                    "properties": { 
+                        "name": "North Atlantic Overfishing Zone", 
+                        "description": "Severe depletion of cod and other fish stocks.",
+                        "type": "Overfishing Area",
+                        "impact": "90% reduction in fish populations since 1950",
+                        "source": "FAO"
+                    } 
+                },
+                { 
+                    "type": "Feature", 
+                    "geometry": { "type": "Point", "coordinates": [-88, 28] }, 
+                    "properties": { 
+                        "name": "Deepwater Horizon Oil Spill", 
+                        "description": "Largest marine oil spill in history. Released 4.9 million barrels of oil.",
+                        "type": "Oil Spill Incident",
+                        "date": "April 20, 2010",
+                        "impact": "Affected 1,300 miles of coastline",
+                        "source": "NOAA"
+                    } 
+                },
+                { 
+                    "type": "Feature", 
+                    "geometry": { "type": "Point", "coordinates": [80, 13] }, 
+                    "properties": { 
+                        "name": "Chennai Coast", 
+                        "description": "Severe plastic and chemical pollution. High concentration of microplastics.",
+                        "type": "High Pollution Zone",
+                        "impact": "Threatening local marine ecosystems",
+                        "source": "Indian Ocean Commission"
+                    } 
+                }
             ]
         };
         
-        // Add GeoJSON layer with color-coded markers
+        // Add GeoJSON layer with enhanced markers
         L.geoJSON(oceanData, {
             pointToLayer: function (feature, latlng) {
                 return L.circleMarker(latlng, {
-                    radius: 8,
+                    radius: 10,
                     fillColor: getMarkerColor(feature.properties.type),
-                    color: "#000",
-                    weight: 1,
+                    color: "#fff",
+                    weight: 2,
                     opacity: 1,
                     fillOpacity: 0.8
                 });
             },
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(`<strong>${feature.properties.name}</strong><br>${feature.properties.description}`);
+                layer.bindPopup(createPopupContent(feature));
             }
         }).addTo(map);
         
-        // Expanded Heatmap Data
+        // Enhanced Heatmap Data with more points and consistent density
         var heatData = [
-            [20, -75, 0.9],
-            [-10, 85, 0.6],
-            [-25, 130, 0.8],
-            [35, -45, 0.7],
-            [-30, 50, 0.5],
-            [13, 80, 0.9],
-            [106, -6, 0.8]
+            // High Pollution Zones
+            [35, -145, 0.9], // Great Pacific Garbage Patch
+            [13, 80, 0.9],   // Chennai Coast
+            [28, -88, 0.8],  // Deepwater Horizon area
+            // Moderate Pollution Zones
+            [35, -45, 0.6],  // North Atlantic
+            [25, -160, 0.5], // Papahānaumokuākea
+            // Low Pollution Zones
+            [-18, 145, 0.3]  // Great Barrier Reef
         ];
         
-        L.heatLayer(heatData, { radius: 25, blur: 15, maxZoom: 5 }).addTo(map);
+        // Add heatmap layer with adjusted parameters
+        L.heatLayer(heatData, {
+            radius: 30,
+            blur: 20,
+            maxZoom: 5,
+            gradient: {
+                0.3: 'green',
+                0.6: 'yellow',
+                0.9: 'red'
+            }
+        }).addTo(map);
+        
+        // Function to get marker color based on type
+        function getMarkerColor(type) {
+            const colors = {
+                "High Pollution Zone": "#ff0000",
+                "Biodiversity Hotspot": "#00ff00",
+                "Marine Protected Area": "#0000ff",
+                "Oil Spill Incident": "#ffa500",
+                "Overfishing Area": "#000000"
+            };
+            return colors[type] || "#808080";
+        }
     </script>
 </body>
 </html>

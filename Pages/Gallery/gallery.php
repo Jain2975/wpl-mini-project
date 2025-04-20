@@ -18,9 +18,9 @@
         <div class="gallery-section">
             <h2>Mammals</h2>
             <div class="gallery">
-                <img src="../../images/gallery/mammals/dolphin.jpg" alt="Dolphin" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/mammals/beluga-whale.jpg" alt="Beluga Whale" onclick="openLightbox(this.src, this.alt)">
                 <img src="../../images/gallery/mammals/sea-lion.jpg" alt="Sea Lion" onclick="openLightbox(this.src, this.alt)">
-                <img src="../../images/gallery/mammals/whale.jpg" alt="Whale" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/mammals/humpback-whales.jpg" alt="Humpback Whale" onclick="openLightbox(this.src, this.alt)">
                 <img src="../../images/gallery/mammals/seal.jpg" alt="Seal" onclick="openLightbox(this.src, this.alt)">
             </div>
         </div>
@@ -28,7 +28,7 @@
         <div class="gallery-section">
             <h2>Fish</h2>
             <div class="gallery">
-                <img src="../../images/gallery/fishes/barracuda.jpeg" alt="Barracuda" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/fishes/baracuda.jpeg" alt="Barracuda" onclick="openLightbox(this.src, this.alt)">
                 <img src="../../images/gallery/fishes/shark.jpg" alt="Shark" onclick="openLightbox(this.src, this.alt)">
                 <img src="../../images/gallery/fishes/eel.jpg" alt="Eel" onclick="openLightbox(this.src, this.alt)">
                 <img src="../../images/gallery/fishes/clownfish.jpg" alt="Clownfish" onclick="openLightbox(this.src, this.alt)">
@@ -39,18 +39,19 @@
         <div class="gallery-section">
             <h2>Coral Reefs</h2>
             <div class="gallery">
-                <img src="../../images/gallery/coral reefs/coral1.jpg" alt="Coral Reef 1" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/coral reefs/coral.jpg" alt="Coral Reef 1" onclick="openLightbox(this.src, this.alt)">
                 <img src="../../images/gallery/coral reefs/coral2.jpg" alt="Coral Reef 2" onclick="openLightbox(this.src, this.alt)">
                 <img src="../../images/gallery/coral reefs/coral3.jpg" alt="Coral Reef 3" onclick="openLightbox(this.src, this.alt)">
             </div>
-        </div>
+        </div>`
 
         <div class="gallery-section">
             <h2>Reptiles</h2>
             <div class="gallery">
-                <img src="../../images/gallery/reptiles/sea-turtle.jpeg" alt="Sea Turtle" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/reptiles/sea-turtle.jpeg" alt="Green Sea Turtle" onclick="openLightbox(this.src, this.alt)">
                 <img src="../../images/gallery/reptiles/marine-iguana.jpg" alt="Marine Iguana" onclick="openLightbox(this.src, this.alt)">
-                <img src="../../images/gallery/reptiles/sea-snake.jpg" alt="Sea Snake" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/reptiles/turtle2.jpg" alt="Loggerhead Sea Turtle" onclick="openLightbox(this.src, this.alt)">
+                <img src="../../images/gallery/reptiles/iguana2.jpg" alt="Marine Iguana Swimming" onclick="openLightbox(this.src, this.alt)">
             </div>
         </div>
     </div>
