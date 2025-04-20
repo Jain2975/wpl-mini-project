@@ -108,7 +108,7 @@ session_start();
             <a href="./Pages/login.php">Login/Register</a>
         <?php endif; ?>
         <a href="./Pages/Gallery/gallery.php">Gallery</a>
-        <a href="./Pages/Awareness/awareness.php">Awareness</a>
+        <a href="./Pages/awareness.php">Awareness</a>
         <a href="./Pages/contact.php">Contact</a>
     </div>
 
