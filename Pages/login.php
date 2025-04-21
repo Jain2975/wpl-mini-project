@@ -29,11 +29,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 setcookie("user_pass", "", time() - 3600, "/");
             }
 
-            // Redirect based on role
-            if ($user["role"] === "admin") {
-                header("Location: admin_dashboard.php");
+            // Check if there's a selected organization in sessionStorage
+            if (isset($_SESSION['selectedOrganization'])) {
+                // Redirect to donate page
+                header("Location: donate.php");
             } else {
-                header("Location: ../index.php");
+                // Redirect based on role
+                if ($user["role"] === "admin") {
+                    header("Location: admin_dashboard.php");
+                } else {
+                    header("Location: ../index.php");
+                }
             }
             exit();
         } else { 
@@ -63,7 +69,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="nav">
         <a href="../index.php">Home</a>
         <!--<a href="about.php">About</a>-->
-        <a href="contact.php">Contact</a>
     </div>
 
     <div class="login-container">

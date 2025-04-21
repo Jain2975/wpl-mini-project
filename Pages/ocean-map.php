@@ -123,7 +123,6 @@
 <body>
     <div class="nav">
         <a href="../index.php">Home</a>
-        <a href="../Pages/contact.php">Contact</a>
     </div>
     
     <div class="map-container">

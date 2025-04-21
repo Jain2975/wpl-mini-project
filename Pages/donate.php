@@ -127,7 +127,7 @@
         <p style="text-align: center; margin-bottom: 30px;">Choose an organization to support and make a donation to help protect our oceans.</p>
         
         <div class="org-grid">
-            <div class="org-card">
+            <div class="org-card" id="ocean-conservancy">
                 <img src="../images/ocean-conservancy.png" alt="Ocean Conservancy" class="org-logo">
                 <h2>Ocean Conservancy</h2>
                 <p>Dedicated to protecting the ocean from today's greatest global challenges. Your donation will help fund research, advocacy, and conservation efforts.</p>
@@ -138,7 +138,7 @@
                 </div>
             </div>
             
-            <div class="org-card">
+            <div class="org-card" id="sea-shepherd">
                 <img src="../images/sea-shepherd.png" alt="Sea Shepherd" class="org-logo">
                 <h2>Sea Shepherd</h2>
                 <p>Direct action to defend, conserve, and protect the ocean. Your support helps fund patrols and interventions against illegal fishing and whaling.</p>
@@ -149,7 +149,7 @@
                 </div>
             </div>
             
-            <div class="org-card">
+            <div class="org-card" id="marine-conservation">
                 <img src="../images/marine-conservation.png" alt="Marine Conservation Institute" class="org-logo">
                 <h2>Marine Conservation Institute</h2>
                 <p>Working to protect marine biodiversity worldwide. Your contribution supports marine protected areas and conservation initiatives.</p>
@@ -163,6 +163,21 @@
     </div>
 
     <script>
+        // Get the organization from URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedOrg = urlParams.get('org');
+
+        // If an organization is specified, scroll to and highlight that card
+        if (selectedOrg) {
+            const orgId = selectedOrg.toLowerCase().replace(/\s+/g, '-');
+            const orgCard = document.getElementById(orgId);
+            if (orgCard) {
+                orgCard.scrollIntoView({ behavior: 'smooth' });
+                orgCard.style.border = '2px solid #3498db';
+                orgCard.style.boxShadow = '0 0 15px rgba(52, 152, 219, 0.5)';
+            }
+        }
+
         function processDonation(organization, amountId) {
             const amount = document.getElementById(amountId).value;
             if (amount < 1) {

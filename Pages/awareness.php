@@ -187,7 +187,6 @@
 <body>
     <div class="nav">
         <a href="../index.php">Home</a>
-        <a href="../Pages/contact.php">Contact</a>
     </div>
     
     <div class="content">
@@ -231,17 +230,17 @@
             <h2>Support Organizations</h2>
             <p>These organizations are working to protect marine life:</p>
             <div class="support-orgs">
-                <div class="org-card" onclick="showLoginModal()">
+                <div class="org-card" onclick="window.location.href='donate.php?org=Ocean Conservancy'">
                     <h3>Ocean Conservancy</h3>
                     <p>Dedicated to protecting the ocean from today's greatest global challenges.</p>
                     <a href="#">Learn More</a>
                 </div>
-                <div class="org-card" onclick="showLoginModal()">
+                <div class="org-card" onclick="window.location.href='donate.php?org=Sea Shepherd'">
                     <h3>Sea Shepherd</h3>
                     <p>Direct action to defend, conserve, and protect the ocean.</p>
                     <a href="#">Learn More</a>
                 </div>
-                <div class="org-card" onclick="showLoginModal()">
+                <div class="org-card" onclick="window.location.href='donate.php?org=Marine Conservation Institute'">
                     <h3>Marine Conservation Institute</h3>
                     <p>Working to protect marine biodiversity worldwide.</p>
                     <a href="#">Learn More</a>
@@ -250,33 +249,8 @@
         </div>
     </div>
 
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <h2>Sign In Required</h2>
-            <p>Please sign in to support these organizations and make a donation.</p>
-            <div class="modal-buttons">
-                <button class="login-btn" onclick="window.location.href='../Pages/login.php'">Sign In</button>
-                <button class="cancel-btn" onclick="closeLoginModal()">Cancel</button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        function showLoginModal() {
-            document.getElementById('loginModal').style.display = 'block';
-        }
-
-        function closeLoginModal() {
-            document.getElementById('loginModal').style.display = 'none';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('loginModal')) {
-                closeLoginModal();
-            }
-        }
+        // Remove all login modal related functions
     </script>
 </body>
 </html> 

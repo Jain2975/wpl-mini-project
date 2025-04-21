@@ -85,7 +85,6 @@ session_start();
             <a href="./login.php">Login/Register</a>
         <?php endif; ?>
         <a href="./admin_dashboard.php">Dashboard</a>
-        <a href="./contact.php">Contact</a>
     </div>
 
     <div class="modify-container">

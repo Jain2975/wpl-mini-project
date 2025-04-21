@@ -108,17 +108,18 @@ session_start();
             <a href="./login.php">Login/Register</a>
         <?php endif; ?>
         <a href="./admin_modify.php">Modify</a>
-        <a href="./contact.php">Contact</a>
+        <a href="./Gallery/gallery.php">Gallery</a>
+        <a href="./awareness.php">Awareness</a>
     </div>
 
     <section class="home-content">
         <h1>Welcome to Life Below Water</h1>
         <p>
-            Our oceans cover over 70% of the Earth’s surface and are essential to life. They regulate the climate, provide food, 
+            Our oceans cover over 70% of the Earth's surface and are essential to life. They regulate the climate, provide food, 
             and support diverse marine ecosystems. However, pollution, overfishing, and climate change are threatening marine life. 
             <strong>UN Sustainable Development Goal 14</strong> aims to conserve and sustainably use the oceans, seas, and marine resources.
         </p>
-        <a href="./Pages/ocean-map.html" class="explore-btn">Explore Ocean Health Map</a>
+        <a href="./ocean-map.php" class="explore-btn">Explore Ocean Health Map</a>
     </section>
     
     <section class="carousel-container">
@@ -144,7 +145,7 @@ session_start();
         document.addEventListener("DOMContentLoaded", function() {
             const facts = [
                 "🌊 Over 3 billion people depend on marine and coastal biodiversity for their livelihoods.",
-                "🐠 Around 30% of the world’s fish stocks are overexploited.",
+                "🐠 Around 30% of the world's fish stocks are overexploited.",
                 "🚯 More than 8 million tons of plastic enter our oceans every year.",
                 "🌎 Oceans absorb about 30% of the CO₂ produced by humans.",
                 "🐋 Marine species are declining at an alarming rate due to human activities."
