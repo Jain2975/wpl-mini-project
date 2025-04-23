@@ -110,6 +110,7 @@ session_start();
         <a href="./admin_modify.php">Modify</a>
         <a href="./Gallery/gallery.php">Gallery</a>
         <a href="./awareness.php">Awareness</a>
+        <a href="./contact.php">Contact</a>
     </div>
 
     <section class="home-content">
